@@ -21,10 +21,16 @@
 
    <div class="form-container">
       <form name="submit-to-google-sheet">
-         <input name="email" type="email" placeholder="Email" required>
-         <input name="firstName" type="text" placeholder="First Name">
-         <input name="lastName" type="text" placeholder="Last Name">
-         <button type="submit">Subscribe</button>
+         <input name="price" type="number" placeholder="0zł" required>
+         <label for="categories">Kategoria:</label>
+         <select name="category" id="categories">
+            <option value="Jedzenie">Jedzenie</option>
+            <option value="Dom">Dom</option>
+            <option value="Auto">Auto</option>
+            <option value="Oszczędności">Oszczędności</option>
+         </select>
+         <input name="additional-info" type="text" placeholder="dodatkowe informacje">
+         <button type="submit">Dodaj</button>
       </form>
 
       <div class="loading js-loading is-hidden">
@@ -38,9 +44,7 @@
       <p class="js-error-message is-hidden">Error!</p>
    </div>
 
-   <a href="https://docs.google.com/spreadsheets/d/16vDPkBwtMNNMzgbmKfxfOEqGZhtfJha097ZKB23dZdc/edit?usp=sharing"
-      target="_blank">View the Google Sheet</a>
-   <a href="https://github.com/jamiewilson/form-to-google-sheets" target="_blank">View on GitHub</a>
+
 
    <script>
       const scriptURL = 'https://script.google.com/macros/s/AKfycbyei06zM10KZY2xLKd8AuK5Bn189cqL_KDmnAC_DJBkMmKxv1s/exec'
