@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <title>Site title</title>
+   <link rel="stylesheet" href="css/main.css" />
+
+   <script src="https://unpkg.com/prefixfree@1.0.0/prefixfree.min.js"></script>
+
+   <script src="https://wzrd.in/standalone/formdata-polyfill@latest"></script>
+   <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+   <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+</head>
+
+<body>
+   <div class="form-container">
+      <form name="submit-to-google-sheet">
+         <input name="price" type="number" placeholder="0zł" required>
+         <label for="categories">Kategoria:</label>
+         <select name="category" id="categories">
+            <option value="Jedzenie">Jedzenie</option>
+            <option value="Dom">Dom</option>
+            <option value="Auto">Auto</option>
+            <option value="Oszczędności">Oszczędności</option>
+         </select>
+         <input name="additional-info" type="text" placeholder="dodatkowe informacje">
+         <button type="submit">Dodaj</button>
+      </form>
+
+      <div class="loading js-loading is-hidden">
+         <div class="loading-spinner">
+            <svg>
+               <circle cx="25" cy="25" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg>
+         </div>
+      </div>
+
+      <p class="js-success-message is-hidden">Success!</p>
+      <p class="js-error-message is-hidden">Error!</p>
+   </div>
+
+   <script src="js/main.js"></script>
+</body>
+
+</html>
