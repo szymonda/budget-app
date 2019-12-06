@@ -48,3 +48,25 @@ function showErrorMessage(error) {
    }, 500)
 }
 
+import GSheetProcessor from "../../node_modules/g-sheets-api/dist"
+
+// test Sheet url
+const demoSheetURL = 'https://docs.google.com/spreadsheets/d/1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg/edit?usp=sharing';
+
+// test sheet id
+
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
+const demoSheetId = '1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg';
+const mySheetId = '1jkhfaph5-NxoqActt9PoxAiI2XD6KjyGu9GkGI8AA5U';
+const options = {
+   sheetId: demoSheetId,
+   returnAllResults: false,
+   filter: {
+      'department': 'archaeology'
+   }
+}
+
+GSheetProcessor(options, results => {
+   console.log(results);
+});
