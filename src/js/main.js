@@ -58,10 +58,10 @@ const demoSheetURL = 'https://docs.google.com/spreadsheets/d/1-CmQumuz5ZiOvINhph
 //https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
 //https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
 const demoSheetId = '1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg';
-const mySheetId = '1jkhfaph5-NxoqActt9PoxAiI2XD6KjyGu9GkGI8AA5U';
+const mySheetId = '1m_zGPRIhYnKo3lRzgVlhxPTa7iGvJNy-qkpF6sRzapQ';
 const options = {
-   sheetId: demoSheetId,
-   returnAllResults: false,
+   sheetId: mySheetId,
+   returnAllResults: true,
    filter: {
       'department': 'archaeology'
    }
