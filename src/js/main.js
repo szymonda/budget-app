@@ -55,8 +55,6 @@ const demoSheetURL = 'https://docs.google.com/spreadsheets/d/1-CmQumuz5ZiOvINhph
 
 // test sheet id
 
-//https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
-//https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
 const demoSheetId = '1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg';
 const mySheetId = '19sGpOe2AVgdAoB7uwNVvbM8QBxkjh3sEIqy1-AdsCPk';
 const options = {
@@ -67,11 +65,9 @@ const options = {
    // }
 }
 
-GSheetProcessor(options, results => {
-   console.log(results);
+function setCategories(results) {
    const categories = results[0]
    const categoriesArray = Object.values(categories);
-   console.log(categoriesArray);
    const categorySelect = document.querySelector("#categories");
    categoriesArray.forEach(category => {
       const option = document.createElement("option");
@@ -79,9 +75,28 @@ GSheetProcessor(options, results => {
       option.textContent = category;
       categorySelect.appendChild(option);
    })
+}
 
+function setSubCategories(results) {
+   //create array of subcategories array
+   const subCategories = []
+   results.forEach((result, index) => {
+      subCategories.push([]);
+   })
 
+   //sort subcategory 
+   results.forEach((result, index) => {
+      if (index > 0) {
+         for (const a in result) {
+            subCategories[a].push(result[a]);
+         }
+      }
+   })
+   console.log(subCategories);
 
+}
 
-
+GSheetProcessor(options, results => {
+   setCategories(results);
+   setSubCategories(results);
 });
