@@ -65,9 +65,12 @@ const options = {
    // }
 }
 
+const budgetObj = {};
+
 function setCategories(results) {
    const categories = results[0]
    const categoriesArray = Object.values(categories);
+   budgetObj.categories = categoriesArray;
    const categorySelect = document.querySelector("#categories");
    categoriesArray.forEach(category => {
       const option = document.createElement("option");
@@ -78,25 +81,25 @@ function setCategories(results) {
 }
 
 function setSubCategories(results) {
-   //create array of subcategories array
-   const subCategories = []
-   results.forEach((result, index) => {
-      subCategories.push([]);
+   budgetObj.subCategories = {};
+   budgetObj.categories.forEach(category => {
+      budgetObj.subCategories[category] = [];
    })
 
    //sort subcategory 
    results.forEach((result, index) => {
       if (index > 0) {
          for (const a in result) {
-            subCategories[a].push(result[a]);
+            const category = budgetObj.categories[a - 1];
+            budgetObj.subCategories[category].push(result[a])
          }
       }
    })
-   console.log(subCategories);
-
 }
 
 GSheetProcessor(options, results => {
    setCategories(results);
    setSubCategories(results);
 });
+
+console.log(budgetObj);
