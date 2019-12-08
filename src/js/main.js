@@ -58,15 +58,30 @@ const demoSheetURL = 'https://docs.google.com/spreadsheets/d/1-CmQumuz5ZiOvINhph
 //https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
 //https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
 const demoSheetId = '1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg';
-const mySheetId = '1m_zGPRIhYnKo3lRzgVlhxPTa7iGvJNy-qkpF6sRzapQ';
+const mySheetId = '19sGpOe2AVgdAoB7uwNVvbM8QBxkjh3sEIqy1-AdsCPk';
 const options = {
    sheetId: mySheetId,
    returnAllResults: true,
-   filter: {
-      'department': 'archaeology'
-   }
+   // filter: {
+   //    'department': 'archaeology'
+   // }
 }
 
 GSheetProcessor(options, results => {
    console.log(results);
+   const categories = results[0]
+   const categoriesArray = Object.values(categories);
+   console.log(categoriesArray);
+   const categorySelect = document.querySelector("#categories");
+   categoriesArray.forEach(category => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      categorySelect.appendChild(option);
+   })
+
+
+
+
+
 });
