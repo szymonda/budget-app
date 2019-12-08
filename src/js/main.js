@@ -78,7 +78,6 @@ function getSubCategories(results) {
    budgetObj.categories.forEach(category => {
       budgetObj.subCategories[category] = [];
    })
-
    //sort subcategory 
    results.forEach((result, index) => {
       if (index > 0) {
@@ -100,6 +99,40 @@ function displayCategories() {
    })
 }
 
+function displaySubCategories() {
+   const categorySelect = document.querySelector("#categories");
+   const subCategorySelect = document.querySelector("#subCategories");
+   categorySelect.addEventListener('change', e => {
+      //console.log(e.target.value);
+      //remove previous subcategories
+      if (subCategorySelect.options) {
+         subCategorySelect.innerHTML = "";
+      }
+      budgetObj.categories.forEach((category, index) => {
+         //display subcategories only if there is a subcategories connected with selected category
+         if (e.target.value === category && budgetObj.subCategories[category].length > 0) {
+
+            const subCategories = budgetObj.subCategories[category];
+            subCategories.forEach(subCategory => {
+               const option = document.createElement("option");
+               option.value = subCategory;
+               option.textContent = subCategory;
+               subCategorySelect.appendChild(option);
+            })
+
+
+
+         }
+      })
+
+
+
+
+
+   })
+
+
+}
 
 
 
@@ -108,6 +141,7 @@ GSheetProcessor(options, results => {
    getCategories(results);
    getSubCategories(results);
    displayCategories();
+   displaySubCategories();
 });
 
 console.log(budgetObj);
