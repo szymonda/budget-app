@@ -111,7 +111,6 @@ function displaySubCategories() {
       budgetObj.categories.forEach((category, index) => {
          //display subcategories only if there is a subcategories connected with selected category
          if (e.target.value === category && budgetObj.subCategories[category].length > 0) {
-
             const subCategories = budgetObj.subCategories[category];
             subCategories.forEach(subCategory => {
                const option = document.createElement("option");
@@ -119,23 +118,12 @@ function displaySubCategories() {
                option.textContent = subCategory;
                subCategorySelect.appendChild(option);
             })
-
-
-
          }
       })
-
-
-
-
-
    })
 
 
 }
-
-
-
 
 GSheetProcessor(options, results => {
    getCategories(results);
@@ -143,8 +131,6 @@ GSheetProcessor(options, results => {
    displayCategories();
    displaySubCategories();
 });
-
-console.log(budgetObj);
 
 Date.prototype.toDateInputValue = (function () {
    var local = new Date(this);
