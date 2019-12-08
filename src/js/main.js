@@ -145,3 +145,12 @@ GSheetProcessor(options, results => {
 });
 
 console.log(budgetObj);
+
+Date.prototype.toDateInputValue = (function () {
+   var local = new Date(this);
+   local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+   return local.toJSON().slice(0, 10);
+});
+
+const datePicker = document.querySelector("#datePicker");
+datePicker.value = new Date().toDateInputValue();
