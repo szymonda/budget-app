@@ -140,3 +140,12 @@ Date.prototype.toDateInputValue = (function () {
 
 const datePicker = document.querySelector("#datePicker");
 datePicker.value = new Date().toDateInputValue();
+
+//Switching between expenses and revenues
+const categorySwitch = document.querySelector("#switch");
+const expenses = document.querySelector("#expenses");
+const revenues = document.querySelector("#revenues");
+categorySwitch.addEventListener('change', e=>{
+   expenses.classList = e.target.checked ? "expenses" : "expenses expenses--hidden";
+   revenues.classList = e.target.checked ? "revenues revenues--hidden" : "revenues";
+})

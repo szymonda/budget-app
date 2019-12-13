@@ -1,6 +1,7 @@
 @import "_normalize";
 @import "_variables";
 
+
 html {
 	box-sizing: border-box;
 }
@@ -54,7 +55,7 @@ body {
 
 input,
 button {
-	appearance: none;
+	//appearance: none;
 	border: none;
 	font-size: inherit;
 	background: #eee;
@@ -145,4 +146,10 @@ a {
 	stroke-dashoffset: 0;
 	stroke-linecap: round;
 	animation: dash 1.5s ease-in-out infinite;
+}
+
+//-----------
+
+.revenues--hidden, .expenses--hidden {
+   display: none;
 }

@@ -16,19 +16,38 @@
 </head>
 
 <body>
-   <div class="form-container">
-      <form name="submit-to-google-sheet">
-         <input type="date" id="datePicker" name="date">
-         <input name="price" type="number" placeholder="0zł" required>
-         <label for="categories">Kategoria:</label>
-         <select name="category" id="categories">
-         </select>
-         <label for="subCategories">Podkategoria:</label>
-         <select name="subCategory" id="subCategories"></select>
-         <input name="additional-info" type="text" placeholder="dodatkowe informacje">
-         <button type="submit">Dodaj</button>
-      </form>
 
+   <div class="form-container form-container--expenses">
+      <form name="submit-to-google-sheet">
+         <label for="switch">
+            Wydatki/Przychody
+         </label>
+         <input id="switch" type="checkbox">
+         <section class="expenses" id="expenses">
+            <h2>Wydatki</h2>
+            <input type="date" id="datePicker" name="date">
+            <input name="price" type="number" placeholder="0zł" required>
+            <label for="categories">Kategoria:</label>
+            <select name="category" id="categories">
+            </select>
+            <label for="subCategories">Podkategoria:</label>
+            <select name="subCategory" id="subCategories"></select>
+            <input name="additional-info" type="text" placeholder="dodatkowe informacje">
+            <button type="submit">Dodaj</button>
+         </section>
+         <section class="revenues revenues--hidden" id="revenues">
+            <h2>Przychody</h2>
+            <input type="date" id="datePicker" name="date">
+            <input name="price" type="number" placeholder="0zł" required>
+            <label for="categories">Kategoria:</label>
+            <select name="category" id="categories">
+            </select>
+            <label for="subCategories">Podkategoria:</label>
+            <select name="subCategory" id="subCategories"></select>
+            <input name="additional-info" type="text" placeholder="dodatkowe informacje">
+            <button type="submit">Dodaj</button>
+         </section>
+      </form>
       <div class="loading js-loading is-hidden">
          <div class="loading-spinner">
             <svg>
