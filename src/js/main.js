@@ -1,4 +1,5 @@
 "use strict";
+// import config.js
 
 // service worker registration - remove if you're not going to use it
 
@@ -17,7 +18,7 @@ if ('serviceWorker' in navigator) {
 // place your code below
 
 //https://docs.google.com/spreadsheets/d/e/2PACX-1vRx2av-PiRinHAjnqgg0zGG_QIDVd0aej26mA_VAhMzLTz2CP-hVqIVtY_zn_nNLWO3VmcusBNdogM_/pubhtml
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyei06zM10KZY2xLKd8AuK5Bn189cqL_KDmnAC_DJBkMmKxv1s/exec'
+const scriptURL = formWebAppUrl
 const form = document.forms['submit-to-google-sheet']
 const loading = document.querySelector('.js-loading')
 const successMessage = document.querySelector('.js-success-message')
@@ -51,12 +52,12 @@ function showErrorMessage(error) {
 import GSheetProcessor from "../../node_modules/g-sheets-api/dist"
 
 // test Sheet url
-const demoSheetURL = 'https://docs.google.com/spreadsheets/d/1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg/edit?usp=sharing';
+const demoSheetURL = 'https://docs.google.com/spreadsheets/d/AKfycbyei06zM10KZY2xLKd8AuK5Bn189cqL_KDmnAC_DJBkMmKxv1s/edit?usp=sharing';
 
 // test sheet id
 
 const demoSheetId = '1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg';
-const mySheetId = '19sGpOe2AVgdAoB7uwNVvbM8QBxkjh3sEIqy1-AdsCPk';
+const mySheetId = categoriesSheetIdUrl;
 const options = {
    sheetId: mySheetId,
    returnAllResults: true,
