@@ -10,43 +10,36 @@
 </head>
 
 <body>
-   <div class="form-container form-container--expenses">
-      <form name="submit-to-google-sheet">
-         <label for="switch">
-            Wydatki/Przychody
-         </label>
-         <input id="switch" type="checkbox">
-
-         <section class="expenses" id="expenses">
-            <h2>Wydatki</h2>
-            <input type="date" id="datePicker" name="date">
-            <input name="price" type="number" placeholder="0zł" required>
-            <label for="categories">Kategoria:</label>
-            <select name="category" id="categories">
-            </select>
-            <label for="subCategories">Podkategoria:</label>
-            <select name="subCategory" id="subCategories"></select>
-            <input name="additional-info" type="text" placeholder="dodatkowe informacje">
-            <button type="submit">Dodaj</button>
-         </section>
-
-         <section class="revenues revenues--hidden" id="revenues">
-            <h2>Przychody</h2>
-
-            <!--
-            TODO: Create separate form for expenses and revenues.
-
-            <input type="date" id="datePicker" name="date">
-            <input name="price" type="number" placeholder="0zł" required>
-            <label for="categories">Kategoria:</label>
-            <select name="category" id="categories">
-            </select>
-            <label for="subCategories">Podkategoria:</label>
-            <select name="subCategory" id="subCategories"></select>
-            <input name="additional-info" type="text" placeholder="dodatkowe informacje">
-            <button type="submit">Dodaj</button> -->
-         </section>
+   <main class="main">
+      <label for="switch">
+         Wydatki/Przychody
+      </label>
+      <input id="switch" type="checkbox">
+      <form name="expenses-form" class="expenses-form">
+         <h2>Wydatki</h2>
+         <input type="date" id="datePicker" name="date">
+         <input name="price" type="number" placeholder="0zł" required>
+         <label for="categories">Kategoria:</label>
+         <select name="category" id="categories">
+         </select>
+         <label for="subCategories">Podkategoria:</label>
+         <select name="subCategory" id="subCategories"></select>
+         <input name="additional-info" type="text" placeholder="dodatkowe informacje">
+         <button type="submit">Dodaj</button>
       </form>
+      <form name="revenues-form" class="revenues-form revenues-form--hidden">
+         <h2>Przychody</h2>
+         <input type="date" id="datePicker2" name="date">
+         <input name="price" type="number" placeholder="0zł" required>
+         <label for="categories">Kategoria:</label>
+         <select name="category" id="categories2">
+         </select>
+         <label for="subCategories">Podkategoria:</label>
+         <select name="subCategory" id="subCategories2"></select>
+         <input name="additional-info" type="text" placeholder="dodatkowe informacje">
+         <button type="submit">Dodaj</button>
+      </form>
+
       <div class="loading js-loading is-hidden">
          <div class="loading-spinner">
             <svg>
@@ -56,7 +49,7 @@
 
       <p class="js-success-message is-hidden">Success!</p>
       <p class="js-error-message is-hidden">Error!</p>
-   </div>
+   </main>
 
    <script src="js/main.js"></script>
 </body>

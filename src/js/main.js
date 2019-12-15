@@ -3,17 +3,19 @@ import { getCategories, getSubCategories, displayCategories, displaySubCategorie
 import { SCRIPT_URL, SHEET_ID } from './config';
 import { showErrorMessage, showLoadingIndicator, showSuccessMessage } from './utils.js';
 
-const form = document.forms['submit-to-google-sheet'];
+const expensesForm = document.forms['expenses-form'];
+const revenuesForm = document.forms['revenues-form'];
+const categorySwitch = document.querySelector('#switch');
 const budgetObj = {};
 const options = {
         sheetId: SHEET_ID,
         returnAllResults: true,
 };
 
-form.addEventListener('submit', e => {
+expensesForm.addEventListener('submit', e => {
         e.preventDefault();
-        showLoadingIndicator(form);
-        fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
+        showLoadingIndicator(expensesForm);
+        fetch(SCRIPT_URL, { method: 'POST', body: new FormData(expensesForm) })
                 .then(response => showSuccessMessage(response))
                 .catch(error => showErrorMessage(error));
 });
@@ -36,10 +38,7 @@ const datePicker = document.querySelector('#datePicker');
 datePicker.value = new Date().toDateInputValue();
 
 // Switching between expenses and revenues.
-const categorySwitch = document.querySelector('#switch');
-const expenses = document.querySelector('#expenses');
-const revenues = document.querySelector('#revenues');
 categorySwitch.addEventListener('change', e => {
-        expenses.classList = e.target.checked ? 'expenses' : 'expenses expenses--hidden';
-        revenues.classList = e.target.checked ? 'revenues revenues--hidden' : 'revenues';
+        expensesForm.classList = e.target.checked ? 'expenses-form expenses-form--hidden' : 'expenses-form';
+        revenuesForm.classList = e.target.checked ? 'revenues-form' : 'revenues-form revenues-form--hidden';
 });
