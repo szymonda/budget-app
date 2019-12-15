@@ -1,17 +1,14 @@
 import GSheetProcessor from '../../node_modules/g-sheets-api/dist';
 import { getCategories, getSubCategories, displayCategories, displaySubCategories } from './categories';
+import { SCRIPT_URL, SHEET_ID } from './config';
 
-// Demo sheet url: 'https://docs.google.com/spreadsheets/d/1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg/edit?usp=sharing'.
-// Demo sheet id: '1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg'.
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyei06zM10KZY2xLKd8AuK5Bn189cqL_KDmnAC_DJBkMmKxv1s/exec';
-const mySheetId = '19sGpOe2AVgdAoB7uwNVvbM8QBxkjh3sEIqy1-AdsCPk';
 const form = document.forms['submit-to-google-sheet'];
 const loading = document.querySelector('.js-loading');
 const successMessage = document.querySelector('.js-success-message');
 const errorMessage = document.querySelector('.js-error-message');
 const budgetObj = {};
 const options = {
-        sheetId: mySheetId,
+        sheetId: SHEET_ID,
         returnAllResults: true,
 };
 
@@ -37,7 +34,7 @@ function showErrorMessage(error) {
 form.addEventListener('submit', e => {
         e.preventDefault();
         showLoadingIndicator();
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
                 .then(response => showSuccessMessage(response))
                 .catch(error => showErrorMessage(error));
 });
