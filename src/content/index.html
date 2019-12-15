@@ -17,25 +17,23 @@
       <input id="switch" type="checkbox">
       <form name="expenses-form" class="expenses-form">
          <h2>Wydatki</h2>
-         <input type="date" id="datePicker" name="date">
+         <input type="date" id="expenses-datePicker" name="date" class="date-picker--js">
          <input name="price" type="number" placeholder="0zł" required>
          <label for="categories">Kategoria:</label>
-         <select name="category" id="categories">
-         </select>
+         <select name="category" id="expenses-categories" class="categories--js"></select>
          <label for="subCategories">Podkategoria:</label>
-         <select name="subCategory" id="subCategories"></select>
+         <select name="subCategory" id="expenses-subCategories" class="subCategories--js"></select>
          <input name="additional-info" type="text" placeholder="dodatkowe informacje">
          <button type="submit">Dodaj</button>
       </form>
       <form name="revenues-form" class="revenues-form revenues-form--hidden">
          <h2>Przychody</h2>
-         <input type="date" id="datePicker2" name="date">
+         <input type="date" id="revenues-datePicker" name="date" class="date-picker--js">
          <input name="price" type="number" placeholder="0zł" required>
          <label for="categories">Kategoria:</label>
-         <select name="category" id="categories2">
-         </select>
+         <select name="category" id="revenues-categories" class="categories--js"></select>
          <label for="subCategories">Podkategoria:</label>
-         <select name="subCategory" id="subCategories2"></select>
+         <select name="subCategory" id="revenues-subCategories" class="subCategories--js"></select>
          <input name="additional-info" type="text" placeholder="dodatkowe informacje">
          <button type="submit">Dodaj</button>
       </form>
