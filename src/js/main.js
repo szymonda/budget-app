@@ -27,16 +27,6 @@ GSheetProcessor(options, results => {
         displaySubCategories(budgetObj);
 });
 
-// Getting actual date for date picker.
-Date.prototype.toDateInputValue = function() {
-        const local = new Date(this);
-        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-        return local.toJSON().slice(0, 10);
-};
-
-const datePicker = document.querySelector('#datePicker');
-datePicker.value = new Date().toDateInputValue();
-
 // Switching between expenses and revenues.
 categorySwitch.addEventListener('change', e => {
         expensesForm.classList = e.target.checked ? 'expenses-form expenses-form--hidden' : 'expenses-form';
