@@ -23,6 +23,7 @@
             Wydatki/Przychody
          </label>
          <input id="switch" type="checkbox">
+
          <section class="expenses" id="expenses">
             <h2>Wydatki</h2>
             <input type="date" id="datePicker" name="date">
@@ -35,8 +36,13 @@
             <input name="additional-info" type="text" placeholder="dodatkowe informacje">
             <button type="submit">Dodaj</button>
          </section>
+
          <section class="revenues revenues--hidden" id="revenues">
             <h2>Przychody</h2>
+
+            <!--
+            TODO: Currently not working.
+
             <input type="date" id="datePicker" name="date">
             <input name="price" type="number" placeholder="0zł" required>
             <label for="categories">Kategoria:</label>
@@ -45,7 +51,7 @@
             <label for="subCategories">Podkategoria:</label>
             <select name="subCategory" id="subCategories"></select>
             <input name="additional-info" type="text" placeholder="dodatkowe informacje">
-            <button type="submit">Dodaj</button>
+            <button type="submit">Dodaj</button> -->
          </section>
       </form>
       <div class="loading js-loading is-hidden">
