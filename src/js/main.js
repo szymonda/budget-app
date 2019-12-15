@@ -73,6 +73,7 @@ function displayCategories() {
         });
 }
 
+// CHECK IT: It is posting undefined when category doesn't contain subcategory.
 function displaySubCategories() {
         const categorySelect = document.querySelector('#categories');
         const subCategorySelect = document.querySelector('#subCategories');
