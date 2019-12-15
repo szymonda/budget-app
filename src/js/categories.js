@@ -1,3 +1,6 @@
+const categorySelects = document.querySelectorAll('.categories--js');
+const subCategorySelects = document.querySelectorAll('.subCategories--js');
+
 function getCategories(results, object) {
         const categories = results[0];
         const categoriesArray = Object.values(categories);
@@ -21,35 +24,39 @@ function getSubCategories(results, object) {
 }
 
 function displayCategories(object) {
-        const categorySelect = document.querySelector('#categories');
         object.categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categorySelect.appendChild(option);
+                categorySelects.forEach(categorySelect => {
+                        const option = document.createElement('option');
+                        option.value = category;
+                        option.textContent = category;
+                        categorySelect.appendChild(option);
+                });
         });
 }
 
-// CHECK IT: It is posting undefined when category doesn't contain subcategory.
+// !CHECK IT: It is posting undefined when category doesn't contain subcategory.
+// !BUG: After switching between revenues/expenses subCategory stays on the previous state (switch should clear category category)
 function displaySubCategories(object) {
-        const categorySelect = document.querySelector('#categories');
-        const subCategorySelect = document.querySelector('#subCategories');
-        categorySelect.addEventListener('change', e => {
-                // Remove previous subcategories.
-                if (subCategorySelect.options) {
-                        subCategorySelect.innerHTML = '';
-                }
-                object.categories.forEach(category => {
-                        // Display subcategories only if there is a subcategories connected with selected category.
-                        if (e.target.value === category && object.subCategories[category].length > 0) {
-                                const subCategories = object.subCategories[category];
-                                subCategories.forEach(subCategory => {
-                                        const option = document.createElement('option');
-                                        option.value = subCategory;
-                                        option.textContent = subCategory;
-                                        subCategorySelect.appendChild(option);
+        categorySelects.forEach(categorySelect => {
+                categorySelect.addEventListener('change', e => {
+                        // Remove previous subcategories.
+                        subCategorySelects.forEach(subCategorySelect => {
+                                if (subCategorySelect.options) {
+                                        subCategorySelect.innerHTML = '';
+                                }
+                                object.categories.forEach(category => {
+                                        // Display subcategories only if there is a subcategories connected with selected category.
+                                        if (e.target.value === category && object.subCategories[category].length > 0) {
+                                                const subCategories = object.subCategories[category];
+                                                subCategories.forEach(subCategory => {
+                                                        const option = document.createElement('option');
+                                                        option.value = subCategory;
+                                                        option.textContent = subCategory;
+                                                        subCategorySelect.appendChild(option);
+                                                });
+                                        }
                                 });
-                        }
+                        });
                 });
         });
 }
