@@ -14,8 +14,8 @@ form.addEventListener('submit', e => {
         e.preventDefault();
         showLoadingIndicator(form);
         fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
-                .then(response => showSuccessMessage(form, response))
-                .catch(error => showErrorMessage(form, error));
+                .then(response => showSuccessMessage(response))
+                .catch(error => showErrorMessage(error));
 });
 
 GSheetProcessor(options, results => {
