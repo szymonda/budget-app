@@ -1,4 +1,5 @@
 import GSheetProcessor from '../../node_modules/g-sheets-api/dist';
+import { getCategories, getSubCategories, displayCategories, displaySubCategories } from './categories';
 
 // Demo sheet url: 'https://docs.google.com/spreadsheets/d/1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg/edit?usp=sharing'.
 // Demo sheet id: '1-CmQumuz5ZiOvINhphEMgfplrJacQhD623RROcOBTAg'.
@@ -41,67 +42,11 @@ form.addEventListener('submit', e => {
                 .catch(error => showErrorMessage(error));
 });
 
-function getCategories(results) {
-        const categories = results[0];
-        const categoriesArray = Object.values(categories);
-        budgetObj.categories = categoriesArray;
-}
-
-function getSubCategories(results) {
-        budgetObj.subCategories = {};
-        budgetObj.categories.forEach(category => {
-                budgetObj.subCategories[category] = [];
-        });
-        // Sorting subcategories.
-        results.forEach((result, index) => {
-                if (index > 0) {
-                        for (const a in result) {
-                                const category = budgetObj.categories[a - 1];
-                                budgetObj.subCategories[category].push(result[a]);
-                        }
-                }
-        });
-}
-
-function displayCategories() {
-        const categorySelect = document.querySelector('#categories');
-        budgetObj.categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categorySelect.appendChild(option);
-        });
-}
-
-// CHECK IT: It is posting undefined when category doesn't contain subcategory.
-function displaySubCategories() {
-        const categorySelect = document.querySelector('#categories');
-        const subCategorySelect = document.querySelector('#subCategories');
-        categorySelect.addEventListener('change', e => {
-                // Remove previous subcategories.
-                if (subCategorySelect.options) {
-                        subCategorySelect.innerHTML = '';
-                }
-                budgetObj.categories.forEach(category => {
-                        // Display subcategories only if there is a subcategories connected with selected category.
-                        if (e.target.value === category && budgetObj.subCategories[category].length > 0) {
-                                const subCategories = budgetObj.subCategories[category];
-                                subCategories.forEach(subCategory => {
-                                        const option = document.createElement('option');
-                                        option.value = subCategory;
-                                        option.textContent = subCategory;
-                                        subCategorySelect.appendChild(option);
-                                });
-                        }
-                });
-        });
-}
-
 GSheetProcessor(options, results => {
-        getCategories(results);
-        getSubCategories(results);
-        displayCategories();
-        displaySubCategories();
+        getCategories(results, budgetObj);
+        getSubCategories(results, budgetObj);
+        displayCategories(budgetObj);
+        displaySubCategories(budgetObj);
 });
 
 // Getting actual date for date picker.
