@@ -1,7 +1,7 @@
 const loading = document.querySelector('.js-loading');
 const successMessage = document.querySelector('.js-success-message');
 const errorMessage = document.querySelector('.js-error-message');
-const datePicker = document.querySelector('#datePicker');
+const datePicker = document.querySelectorAll('.date-picker--js');
 
 function showLoadingIndicator(form) {
         form.classList.add('is-hidden');
@@ -28,6 +28,9 @@ Date.prototype.toDateInputValue = function() {
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
         return local.toJSON().slice(0, 10);
 };
-datePicker.value = new Date().toDateInputValue();
+
+datePicker.forEach(datePicker => {
+        datePicker.value = new Date().toDateInputValue();
+});
 
 export { showLoadingIndicator, showSuccessMessage, showErrorMessage };
