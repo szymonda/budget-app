@@ -5,26 +5,35 @@
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-   <title>Site title</title>
+   <title>Budget App</title>
    <link rel="stylesheet" href="css/main.css" />
-
-   <script src="https://unpkg.com/prefixfree@1.0.0/prefixfree.min.js"></script>
-
-   <script src="https://wzrd.in/standalone/formdata-polyfill@latest"></script>
-   <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
-   <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
 </head>
 
 <body>
-   <div class="form-container">
-      <form name="submit-to-google-sheet">
-         <input type="date" id="datePicker" name="date">
+   <main class="main">
+      <label for="switch">
+         Wydatki/Przychody
+      </label>
+      <input id="switch" type="checkbox">
+      <form name="expenses-form" class="expenses-form">
+         <h2>Wydatki</h2>
+         <input type="date" id="expenses-datePicker" name="date" class="date-picker--js">
          <input name="price" type="number" placeholder="0zł" required>
          <label for="categories">Kategoria:</label>
-         <select name="category" id="categories">
-         </select>
+         <select name="category" id="expenses-categories" class="categories--js"></select>
          <label for="subCategories">Podkategoria:</label>
-         <select name="subCategory" id="subCategories"></select>
+         <select name="subCategory" id="expenses-subCategories" class="subCategories--js"></select>
+         <input name="additional-info" type="text" placeholder="dodatkowe informacje">
+         <button type="submit">Dodaj</button>
+      </form>
+      <form name="revenues-form" class="revenues-form revenues-form--hidden">
+         <h2>Przychody</h2>
+         <input type="date" id="revenues-datePicker" name="date" class="date-picker--js">
+         <input name="price" type="number" placeholder="0zł" required>
+         <label for="categories">Kategoria:</label>
+         <select name="category" id="revenues-categories" class="categories--js"></select>
+         <label for="subCategories">Podkategoria:</label>
+         <select name="subCategory" id="revenues-subCategories" class="subCategories--js"></select>
          <input name="additional-info" type="text" placeholder="dodatkowe informacje">
          <button type="submit">Dodaj</button>
       </form>
@@ -38,7 +47,7 @@
 
       <p class="js-success-message is-hidden">Success!</p>
       <p class="js-error-message is-hidden">Error!</p>
-   </div>
+   </main>
 
    <script src="js/main.js"></script>
 </body>

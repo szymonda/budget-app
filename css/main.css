@@ -338,7 +338,7 @@ body {
   font-family: system, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.4; }
 
-.form-container {
+.main {
   position: relative;
   background: #fff;
   padding: 2rem;
@@ -366,9 +366,6 @@ body {
 
 input,
 button {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
   border: none;
   font-size: inherit;
   background: #eee;
@@ -473,5 +470,8 @@ a {
   stroke-linecap: round;
   -webkit-animation: dash 1.5s ease-in-out infinite;
           animation: dash 1.5s ease-in-out infinite; }
+
+.revenues-form--hidden, .expenses-form--hidden {
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */
